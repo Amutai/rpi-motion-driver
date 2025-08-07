@@ -1,0 +1,9 @@
+# Global ownership
+* @Amutai
+
+# Kernel driver code
+/driver/ @Amutai
+
+# Documentation
+/docs/ @Amutai
+*.md @Amutai
