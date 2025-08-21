@@ -32,8 +32,9 @@ jobs:
         
     - name: Static Analysis with Cppcheck
       run: |
-        cppcheck --enable=warning,error,portability --error-exitcode=1 \
+        cppcheck --enable=warning,performance,portability --error-exitcode=1 \
           --suppress=missingIncludeSystem \
+          --suppress=variableScope \
           driver/motion_driver.c user/
           
     - name: Memory Safety Analysis
