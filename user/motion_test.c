@@ -17,7 +17,7 @@ void signal_handler(int sig) {
 }
 
 int main(int argc, char *argv[]) {
-    int fd, ret;
+    int fd;
     char buffer[64];
     fd_set readfds;
     struct timeval timeout;
@@ -44,7 +44,7 @@ int main(int argc, char *argv[]) {
         timeout.tv_sec = 1;
         timeout.tv_usec = 0;
         
-        ret = select(fd + 1, &readfds, NULL, NULL, &timeout);
+        int ret = select(fd + 1, &readfds, NULL, NULL, &timeout);
         
         if (ret < 0) {
             if (errno == EINTR) continue;
@@ -58,7 +58,7 @@ int main(int argc, char *argv[]) {
         }
         
         if (FD_ISSET(fd, &readfds)) {
-            ret = read(fd, buffer, sizeof(buffer) - 1);
+            int ret = read(fd, buffer, sizeof(buffer) - 1);
             if (ret < 0) {
                 perror("read failed");
                 break;
